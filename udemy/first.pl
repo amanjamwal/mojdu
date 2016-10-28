@@ -38,6 +38,23 @@ sub change_file {
     }
 }
 
+sub test_re {
+    print "Matches\n" if "Hello World!" =~ /World/;
+    print "Not Matches\n" if "Hello World!" !~ /world/;
+    print "Matches\n" if "/usr/bin/perl" =~ m{/perl};
+
+    my $test = 'cat dog house';
+    while($test =~ /(\w+)/g) {
+        print "Word id $1, ends at positiion ", pos $test, "\n";
+    }
+
+    #Search and replace
+
+    $test = "I like cats.\n";
+    $test =~ s/cat/dog/;
+    print $test;
+}
+
 sub main {
     print "Downloading ...\n";
     my $text = 'http://www.archive.org/sitemap/sitemap_00000.xml.gz';
@@ -57,4 +74,6 @@ sub main {
 #    '/Users/ajamwal/Workspace/mojdu/udemy/none.pl',
 #    '/Users/ajamwal/Workspace/mojdu/udemy/learn.pl');
 
-change_file('/Users/ajamwal/Workspace/mojdu/udemy/learn.pl', 'you', 'YOU' );
+#change_file('/Users/ajamwal/Workspace/mojdu/udemy/learn.pl', 'you', 'YOU' );
+
+test_re();
